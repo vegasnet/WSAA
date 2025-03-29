@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  wsaa:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        time_expiration_token: "${time_expiration_token:-4}"
+        service_: "${service_:-wsfe}"
+        endpoint_: "${endpoint_:-https://wsaahomo.afip.gov.ar/ws/services/LoginCms?wsdl}"
+        keystore_: "${keystore_:-certs/private/ARStore.p12}"
+        keystore_signer: "${keystore_signer:-sapqa}"
+        pathCache: "${pathCache:-cacheToken/tokenCache.db}"
+    environment:
+      - TIME_EXPIRATION_TOKEN=${time_expiration_token:-4}
+      - SERVICE=${service_:-wsfe}
+      - ENDPOINT=${endpoint_:-https://wsaahomo.afip.gov.ar/ws/services/LoginCms?wsdl}
+      - KEYSTORE=${keystore_:-certs/private/ARStore.p12}
+      - KEYSTORE_SIGNER=${keystore_signer:-sapqa}
+      - PATH_CACHE=${pathCache:-cacheToken/tokenCache.db}
+    ports:
+      - "8080:8080"
