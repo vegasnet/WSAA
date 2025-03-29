@@ -15,12 +15,12 @@ docker-compose up --build
 
 # Parameters
 Each of these parameters can be configured when building the Docker image:
-time_expiration_token
-service_
-endpoint_
-keystore_
-keystore_signer
-pathCache
+- **time_expiration_token**: Defines the token expiration time.
+- **service_**: The service identifier.
+- **endpoint_**: The endpoint URL or configuration.
+- **keystore_**: Path to the keystore file.
+- **keystore_signer**: The signer used for keystore operations.
+- **pathCache**: Directory where cached files are stored.
 
 # Example:
 docker buildx build --no-cache --build-arg time_expiration_token=4 --build-arg service_=wsfe --build-arg endpoint_="https://wsaahomo.afip.gov.ar/ws/services/LoginCms?wsdl" --build-arg keystore_="certs/private/ARStore.p12" --build-arg keystore_signer="sapqa" --build-arg pathCache="cacheToken/tokenCache.db" -t wsaa . && docker run --name wsaa_container -p 8080:8080 -d wsaa
