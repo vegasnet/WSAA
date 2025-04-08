@@ -1,4 +1,4 @@
-ARG time_expiration_token=5
+ARG time_expiration_token=4
 ARG service_=wsfe
 ARG endpoint_="https://wsaahomo.afip.gov.ar/ws/services/LoginCms?wsdl"
 ARG keystore_="certs/private/ARStore.p12"
