@@ -23,7 +23,11 @@ Each of these parameters can be configured when building the Docker image:
 - **pathCache**: Directory where cached files are stored.
 
 # Docker constructor example for parameters:
-docker buildx build --no-cache --build-arg time_expiration_token=5 --build-arg service_=wsfe --build-arg endpoint_="https://wsaahomo.afip.gov.ar/ws/services/LoginCms?wsdl" --build-arg keystore_="certs/private/ARStore.p12" --build-arg keystore_signer="sapqa" --build-arg pathCache="cacheToken/tokenCache.db" -t wsaa . && docker run --name wsaa_container -p 8080:8080 -d wsaa
+builder
+
+docker buildx build --no-cache --build-arg time_expiration_token=5 --build-arg service_=wsfe --build-arg endpoint_="https://wsaahomo.afip.gov.ar/ws/services/LoginCms?wsdl" --build-arg keystore_="certs/private/ARStore.p12" --build-arg keystore_signer="sapqa" --build-arg pathCache="cacheToken/tokenCache.db" -t wsaa . 
+after
+docker run --name wsaa_container -p 8080:8080 -d wsaa
 
 # API GET: http://localhost:8080/api/arca/wssa
 
